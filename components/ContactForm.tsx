@@ -5,7 +5,7 @@ import { Send, CheckCircle2, AlertCircle, Loader2, User, Mail, MessageSquare } f
 
 const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', telegram: '', message: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const ContactForm: React.FC = () => {
     // Simulate API call
     setTimeout(() => {
       setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', telegram: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
     }, 1500);
   };
@@ -82,15 +82,15 @@ const ContactForm: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-[10px] font-orbitron text-cyber-cyan uppercase tracking-widest ml-1">
-                      <Mail size={12} /> EMAIL
+                      <Send size={12} /> TELEGRAM ACCOUNT
                     </label>
                     <input 
                       required
-                      type="email" 
-                      placeholder="MAIL@CYBERPUNK.NET"
+                      type="text" 
+                      placeholder="@USERNAME"
                       className={inputClasses}
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      value={formData.telegram}
+                      onChange={(e) => setFormData({...formData, telegram: e.target.value})}
                     />
                   </div>
                 </div>
